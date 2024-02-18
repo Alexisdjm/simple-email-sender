@@ -13,8 +13,8 @@ RUN npm install
 # Copia todo el código fuente de la aplicación
 COPY . .
 
-# Expone el puerto 3000 (o el puerto que uses en tu aplicación Express)
-EXPOSE 3000
+# Expone el puerto 80 (o el puerto que uses en tu aplicación Express)
+EXPOSE 80
 
 # Comando para ejecutar la aplicación cuando se inicie el contenedor
 CMD ["node", "app.js"]
