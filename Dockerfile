@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expone el puerto 80 (o el puerto que uses en tu aplicación Express)
-EXPOSE 80
+EXPOSE 443
 
 # Comando para ejecutar la aplicación cuando se inicie el contenedor
 CMD ["node", "app.js"]
