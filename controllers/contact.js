@@ -2,10 +2,10 @@ const { response, request } = require('express');
 const nodemailer = require('nodemailer');
 
 const contactPost = (req = request, res = response) => {
-    console.log(process.env.EMAIL_SENDER);
 
     let emailSender = process.env.EMAIL_SENDER;
     let emailReceiver = process.env.EMAIL_RECEIVER ?? process.env.EMAIL_SENDER;
+    let title = process.env.TITLE ?? "Te han contactado desde tu página web";
 
     const transporter = nodemailer.createTransport({
         service: "Gmail",
@@ -25,7 +25,7 @@ const contactPost = (req = request, res = response) => {
     const mailOptions = {
         from: emailSender,
         to: emailReceiver,
-        subject: "Te han contactado desde tu página web",
+        subject: title,
         text: req.body.message,
       };
 

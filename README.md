@@ -18,7 +18,8 @@
     "enviromentSetted": {
         "EMAIL_SENDER": true,
         "EMAIL_RECEIVER": false,
-        "PASSWORD": true
+        "PASSWORD": true,
+        "TITLE": true,
     }
 } 
 
