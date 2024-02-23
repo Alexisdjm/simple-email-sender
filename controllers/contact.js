@@ -6,7 +6,6 @@ const contactPost = (req = request, res = response) => {
     let emailSender = process.env.EMAIL_SENDER;
     let emailReceiver = process.env.EMAIL_RECEIVER ?? process.env.EMAIL_SENDER;
     let title = process.env.TITLE ?? "Te han contactado desde tu página web";
-    console.log('message', process.env.PASSWORD);
 
     const transporter = nodemailer.createTransport({
         service: "Gmail",
