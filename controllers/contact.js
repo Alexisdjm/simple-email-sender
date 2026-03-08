@@ -8,14 +8,11 @@ const contactPost = (req = request, res = response) => {
     let emailReceiver = process.env.EMAIL_RECEIVER ?? process.env.EMAIL_SENDER;
 
     const transporter = nodemailer.createTransport({
-        service: "Gmail",
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        // port: 587,
+        host: 'smtp-relay.brevo.com',
+        port: 587,
+        secure: false,
         auth: {
-        //   user: process.env.EMAIL ,
-          user: emailSender ,
+          user: process.env.SMTP_USER,
           pass: process.env.PASSWORD,
         },
       });
@@ -36,16 +33,6 @@ const contactPost = (req = request, res = response) => {
             console.log("Email sent: ", info.response);
         }
     });
-    // const transporter = nodemailer.createTransport({
-    //     service: "Gmail",
-    //     host: "smtp.gmail.com",
-    //     port: 465,
-    //     secure: true,
-    //     auth: {
-    //       user: "your_email@gmail.com",
-    //       pass: "your_app_password",
-    //     },
-    //   });
 
     res.json({
         msg: 'post API - contactPost '
