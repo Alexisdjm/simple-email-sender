@@ -23,8 +23,9 @@ class Server {
         // CORS
         this.app.use( cors() );
 
-        // Lectura y parseo del body
+        // Lectura y parseo del body (JSON y formularios HTML)
         this.app.use( express.json() );
+        this.app.use( express.urlencoded({ extended: true }) );
 
     }
 

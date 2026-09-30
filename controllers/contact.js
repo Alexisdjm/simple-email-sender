@@ -1,5 +1,6 @@
 const { response, request } = require('express');
 const nodemailer = require('nodemailer');
+const { buildEmailHtml } = require('../helpers/fields');
 
 const contactPost = (req = request, res = response) => {
     console.log(process.env.EMAIL_SENDER);
@@ -22,8 +23,8 @@ const contactPost = (req = request, res = response) => {
     const mailOptions = {
         from: emailSender,
         to: emailReceiver,
-        subject: "Te han contactado desde tu página web",
-        html: req.body.message,
+        subject: process.env.MAIL_SUBJECT || "Te han contactado desde tu página web",
+        html: buildEmailHtml(req.body),
       };
 
     transporter.sendMail(mailOptions, (error, info) => {

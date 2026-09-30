@@ -6,15 +6,20 @@ const {
     validateFields,
 } = require('../middlewares');
 
-const { contactPost, test } = require('../controllers/contact');
+const { contactPost } = require('../controllers/contact');
+const { getRequiredFields } = require('../helpers/fields');
 
 const router = Router();
 
+const requiredFieldChecks = getRequiredFields().map((field) =>
+    check(field, `${field} is required`).notEmpty()
+);
+
 router.post('/',
 [
-    check('message', 'Message is required').notEmpty(),
+    ...requiredFieldChecks,
     validateFields
-], //Validaciones
+],
 contactPost);
 
 module.exports = router;
